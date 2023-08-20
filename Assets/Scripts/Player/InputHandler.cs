@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    public Vector2 movementDirection;
-    public float jump = 0;
+    [HideInInspector] public Vector2 movementDirection;
+    [HideInInspector] public float jump = 0;
+    [HideInInspector] public float sprint = 0;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -16,4 +17,10 @@ public class InputHandler : MonoBehaviour
     {
         jump = ctx.ReadValue<float>();
     }
+
+    public void OnSprint(InputAction.CallbackContext ctx)
+    {
+        sprint = ctx.ReadValue<float>();
+    }
+
 }

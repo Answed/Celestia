@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 1763221318}
   - component: {fileID: 1763221325}
   - component: {fileID: 1763221324}
+  - component: {fileID: 1763221326}
   - component: {fileID: 1763221323}
   - component: {fileID: 1763221322}
   m_Layer: 0
@@ -543,8 +544,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1763221324}
-        m_TargetAssemblyTypeName: PlayerMovementController, Assembly-CSharp
+      - m_Target: {fileID: 1763221326}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -607,8 +608,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1763221324}
-        m_TargetAssemblyTypeName: PlayerMovementController, Assembly-CSharp
+      - m_Target: {fileID: 1763221326}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -621,6 +622,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ee5fe981-59bd-40a8-8f4c-49346ff6d026
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1763221326}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2bcd2576-8309-4c35-bba5-ee7329384b35
+    m_ActionName: Player/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -640,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   jumpForce: 100
+  sprintMultiplikator: 2
 --- !u!114 &1763221325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +673,21 @@ MonoBehaviour:
   heatlh: 0
   coins: 0
   maxHealth: 0
+--- !u!114 &1763221326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763221317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6baa3a2754028644bbb49162d43ebd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: {x: 0, y: 0}
+  jump: 0
+  sprint: 0
 --- !u!1 &1797460739
 GameObject:
   m_ObjectHideFlags: 0

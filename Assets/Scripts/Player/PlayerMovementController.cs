@@ -7,6 +7,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float sprintMultiplikator;
 
     private int jumpcounter;
     private bool onGround;
@@ -23,7 +24,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * movementSpeed * Time.deltaTime;
+        if(inputHandler.sprint == 1)
+            transform.position += new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * movementSpeed * sprintMultiplikator * Time.deltaTime;
+        else transform.position += new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * movementSpeed * Time.deltaTime;
 
         if ((onGround || jumpcounter <= 1) && inputHandler.jump == 1)
         {
@@ -32,7 +35,6 @@ public class PlayerMovementController : MonoBehaviour
             inputHandler.jump = 0;
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
