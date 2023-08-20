@@ -7,10 +7,13 @@ public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float dashForce;
     [SerializeField] private float sprintMultiplikator;
+    [SerializeField] private float dashDelay;
 
     private int jumpcounter;
     private bool onGround;
+    private float nextDash;
 
     private Rigidbody rb;
     private InputHandler inputHandler;
@@ -33,6 +36,13 @@ public class PlayerMovementController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpcounter++;
             inputHandler.jump = 0;
+        }
+
+        if(inputHandler.dash == 1 && nextDash <= Time.time)
+        {
+            inputHandler.dash = 0;
+            rb.AddForce(new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * dashForce, ForceMode.Impulse);
+            nextDash = Time.time + dashDelay;
         }
     }
     private void OnCollisionEnter(Collision collision)
