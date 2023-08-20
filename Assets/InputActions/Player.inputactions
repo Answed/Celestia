@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "c8843244-e2b3-4b12-8f1b-b4bce4ebae3f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,6 +27,15 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "c81ab073-6014-4507-8704-c370f2bf738a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "ee5fe981-59bd-40a8-8f4c-49346ff6d026",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,6 +260,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7637947a-9b4e-4247-a7ca-127543635af2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
