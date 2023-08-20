@@ -673,9 +673,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   jumpForce: 100
-  dashForce: 60
+  dashForce: 100
   sprintMultiplikator: 2
-  dashDelay: 0
+  dashDelay: 0.5
 --- !u!114 &1763221325
 MonoBehaviour:
   m_ObjectHideFlags: 0
