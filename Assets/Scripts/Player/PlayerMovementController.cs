@@ -19,6 +19,7 @@ public class PlayerMovementController : MonoBehaviour
     private InputHandler inputHandler;
     private Transform playerObject;
     private Vector2 moveDir;
+    private Vector3 vel;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +46,17 @@ public class PlayerMovementController : MonoBehaviour
         if(inputHandler.dash == 1 && nextDash <= Time.time)
         {
             inputHandler.dash = 0;
-            transform.Translate(dashForce * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x));
+            rb.AddForce(vel * dashForce, ForceMode.Impulse);    
             nextDash = Time.time + dashDelay;
         }
 
         if (inputHandler.sprint == 1)
-           transform.position += movementSpeed * Time.deltaTime * sprintMultiplikator *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
-        else transform.position += movementSpeed * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+           vel = movementSpeed * 10 * Time.deltaTime * sprintMultiplikator *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+        else vel = movementSpeed * 10 * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+
+        vel.y = rb.velocity.y;
+        rb.velocity = vel;
+
     }
     private void OnCollisionEnter(Collision collision)
     {
