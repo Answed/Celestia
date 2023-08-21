@@ -416,7 +416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206154327}
-  m_LocalRotation: {x: -0.000000020023434, y: 0.00000002235174, z: 5.238689e-10, w: 1}
+  m_LocalRotation: {x: -0.000000045169138, y: 0.0000000372529, z: 6.402842e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -525,7 +525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566226838}
-  m_LocalRotation: {x: -0.00000003073364, y: 0.000000029802319, z: 5.8207655e-10, w: 1}
+  m_LocalRotation: {x: -0.000000045169138, y: 0.0000000372529, z: 6.402842e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -760,7 +760,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834512271}
-  m_LocalRotation: {x: -0.006883125, y: 0.09178757, z: 0.00063447875, w: 0.99575466}
+  m_LocalRotation: {x: -0.006883085, y: 0.0917875, z: 0.0006344746, w: 0.99575466}
   m_LocalPosition: {x: -16.749458, y: 8.115207, z: -1.4758606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -852,8 +852,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 0
-  m_BlendUpdateMethod: 0
+  m_UpdateMethod: 1
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -947,7 +947,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.006883125, y: 0.09178757, z: 0.00063447875, w: 0.99575466}
+  m_LocalRotation: {x: -0.006883134, y: 0.09178757, z: 0.0006344796, w: 0.99575466}
   m_LocalPosition: {x: -16.749458, y: 8.115207, z: -1.4758606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1041,7 +1041,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &984466970
 MonoBehaviour:
@@ -1180,6 +1180,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a1991ee7-bbf3-4a0b-a503-b929463c3fda
     m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 984466971}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8504ed80-f88d-4b9a-8d4e-abb5c7d3d810
+    m_ActionName: Player/Crouch[/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1201,6 +1217,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   dash: 0
+  crouch: 0
 --- !u!114 &984466972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,10 +1230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0052e140bbc9d5c4d88ef4aec2b9c79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 20
   jumpForce: 5
-  dashForce: 100
-  sprintMultiplikator: 2
+  dashForce: 20
+  sprintMultiplyer: 2
+  crouchMultiplyer: 0.75
   dashDelay: 0.5
 --- !u!114 &984466973
 MonoBehaviour:
@@ -1302,7 +1320,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073286639}
-  m_LocalRotation: {x: -0.04131527, y: 0.000000014901161, z: 2.3283064e-10, w: 0.99914616}
+  m_LocalRotation: {x: -0.04131527, y: 0.000000014901161, z: 1.7462298e-10, w: 0.99914616}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
