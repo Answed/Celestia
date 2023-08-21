@@ -12,6 +12,7 @@ public class InputHandler : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
+        Debug.Log(movementDirection);
     }
 
     public void OnJump(InputAction.CallbackContext ctx)

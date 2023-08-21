@@ -17,20 +17,24 @@ public class PlayerMovementController : MonoBehaviour
 
     private Rigidbody rb;
     private InputHandler inputHandler;
+    private Transform playerObject;
+    private Vector2 moveDir;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         inputHandler = GetComponent<InputHandler>();
+        playerObject = GameObject.Find("PlayerObject").GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        moveDir = inputHandler.movementDirection;
     }
 
     private void FixedUpdate()
     {
-        if(inputHandler.sprint == 1)
-            transform.position += new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * movementSpeed * sprintMultiplikator * Time.deltaTime;
-        else transform.position += new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * movementSpeed * Time.deltaTime;
-
         if ((onGround || jumpcounter <= 1) && inputHandler.jump == 1)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -41,9 +45,13 @@ public class PlayerMovementController : MonoBehaviour
         if(inputHandler.dash == 1 && nextDash <= Time.time)
         {
             inputHandler.dash = 0;
-            rb.AddForce(new Vector3(inputHandler.movementDirection.x, 0, inputHandler.movementDirection.y) * dashForce, ForceMode.Impulse);
+            transform.Translate(dashForce * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x));
             nextDash = Time.time + dashDelay;
         }
+
+        if (inputHandler.sprint == 1)
+           transform.position += movementSpeed * Time.deltaTime * sprintMultiplikator *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+        else transform.position += movementSpeed * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
     }
     private void OnCollisionEnter(Collision collision)
     {
