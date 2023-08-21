@@ -8,7 +8,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float dashForce;
-    [SerializeField] private float sprintMultiplikator;
+    [SerializeField] private float sprintMultiplyer;
+    [SerializeField] private float crouchMultiplyer;
     [SerializeField] private float dashDelay;
 
     private int jumpcounter;
@@ -51,12 +52,13 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         if (inputHandler.sprint == 1)
-           vel = movementSpeed * 10 * Time.deltaTime * sprintMultiplikator *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+           vel = movementSpeed * 10 * Time.deltaTime * sprintMultiplyer *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+        else if (inputHandler.crouch == 1)
+            vel = movementSpeed * 10 * Time.deltaTime * crouchMultiplyer * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
         else vel = movementSpeed * 10 * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
 
         vel.y = rb.velocity.y;
         rb.velocity = vel;
-
     }
     private void OnCollisionEnter(Collision collision)
     {
