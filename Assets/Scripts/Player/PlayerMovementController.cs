@@ -15,6 +15,7 @@ public class PlayerMovementController : MonoBehaviour
     private int jumpcounter;
     private bool onGround;
     private float nextDash;
+    private bool isDashing;
 
     private Rigidbody rb;
     private InputHandler inputHandler;
@@ -46,9 +47,11 @@ public class PlayerMovementController : MonoBehaviour
 
         if(inputHandler.dash == 1 && nextDash <= Time.time)
         {
+            isDashing = true;
             inputHandler.dash = 0;
             rb.AddForce(vel * dashForce, ForceMode.Impulse);    
             nextDash = Time.time + dashDelay;
+            StartCoroutine(isDahsing());
         }
 
         if (inputHandler.sprint == 1)
@@ -57,8 +60,11 @@ public class PlayerMovementController : MonoBehaviour
             vel = movementSpeed * 10 * Time.deltaTime * crouchMultiplyer * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
         else vel = movementSpeed * 10 * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
 
-        vel.y = rb.velocity.y;
-        rb.velocity = vel;
+        if(!isDashing)
+        {
+            vel.y = rb.velocity.y;
+            rb.velocity = vel;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -73,5 +79,12 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
             onGround = false;
+    }
+
+    IEnumerator isDahsing()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isDashing = false;
+
     }
 }
