@@ -49,7 +49,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             isDashing = true;
             inputHandler.dash = 0;
-            rb.AddForce(vel * dashForce, ForceMode.Impulse);    
+            rb.AddForce((playerObject.forward * moveDir.y + playerObject.right * moveDir.x) * dashForce, ForceMode.Impulse);    
             nextDash = Time.time + dashDelay;
             StartCoroutine(isDahsing());
         }
