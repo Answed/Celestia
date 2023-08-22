@@ -416,7 +416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206154327}
-  m_LocalRotation: {x: -0.000000045169138, y: 0.0000000372529, z: 6.402842e-10, w: 1}
+  m_LocalRotation: {x: -0.000000017695127, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -525,7 +525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566226838}
-  m_LocalRotation: {x: -0.000000045169138, y: 0.0000000372529, z: 6.402842e-10, w: 1}
+  m_LocalRotation: {x: -0.000000017695127, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -947,7 +947,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.006883134, y: 0.09178757, z: 0.0006344796, w: 0.99575466}
+  m_LocalRotation: {x: -0.006883085, y: 0.0917875, z: 0.0006344746, w: 0.99575466}
   m_LocalPosition: {x: -16.749458, y: 8.115207, z: -1.4758606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 984466968}
   - component: {fileID: 984466973}
   - component: {fileID: 984466972}
+  - component: {fileID: 984466974}
   - component: {fileID: 984466971}
   - component: {fileID: 984466970}
   - component: {fileID: 984466969}
@@ -1089,7 +1090,19 @@ MonoBehaviour:
     m_ActionId: ee0f2c24-cfcd-42df-9ded-cd98754c7132
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 984466971}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnAttack1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c81ab073-6014-4507-8704-c370f2bf738a
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -1235,6 +1248,7 @@ MonoBehaviour:
   dash: 0
   crouch: 0
   zoom: 0
+  attack1: 0
 --- !u!114 &984466972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,7 +1263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 20
   jumpForce: 5
-  dashForce: 20
+  dashForce: 8
   sprintMultiplyer: 2
   crouchMultiplyer: 0.75
   dashDelay: 0.5
@@ -1268,6 +1282,19 @@ MonoBehaviour:
   heatlh: 0
   coins: 0
   maxHealth: 0
+--- !u!114 &984466974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984466967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e974906ed57e0a049b69c69d3e5cad84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magic: {fileID: 11400000, guid: 6cd58a7d32a8738409ff4961e2d483fe, type: 2}
 --- !u!1 &1073286639
 GameObject:
   m_ObjectHideFlags: 3

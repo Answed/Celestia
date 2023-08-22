@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float throwForce;
+    [SerializeField] private float destroyDelay;
 
     private Rigidbody rb;
 
@@ -16,5 +17,11 @@ public class Projectile : MonoBehaviour
     public void Throw(Vector3 direction)
     {
         rb.AddForce(direction * throwForce, ForceMode.Impulse);
+    }
+
+    IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
     }
 }
