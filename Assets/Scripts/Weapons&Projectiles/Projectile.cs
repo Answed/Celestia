@@ -9,13 +9,14 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody rb;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Throw(Vector3 direction)
+    public void ThrowProjectile(Vector3 direction)
     {
+        Debug.Log(rb);
         rb.AddForce(direction * throwForce, ForceMode.Impulse);
     }
 
