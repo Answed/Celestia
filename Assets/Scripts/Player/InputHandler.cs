@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public Vector2 movementDirection;
     [HideInInspector] public float jump = 0;
     [HideInInspector] public float sprint = 0;
-    [HideInInspector] public float dash = 0;
+    [HideInInspector] public bool dash = false;
     [HideInInspector] public float crouch = 0;
     [HideInInspector] public float zoom = 0;
     [HideInInspector] public float attack1 = 0;
@@ -29,7 +29,7 @@ public class InputHandler : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext ctx)
     {
-        dash = ctx.ReadValue<float>();
+            dash = ctx.canceled;
     }
 
     public void OnCrouch(InputAction.CallbackContext ctx)

@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "Dash",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "a1991ee7-bbf3-4a0b-a503-b929463c3fda",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Crouch",
@@ -314,7 +314,7 @@
                     "name": "",
                     "id": "38da879f-4bad-450d-8c71-6467120baeee",
                     "path": "<Keyboard>/shift",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",
@@ -323,9 +323,9 @@
                 },
                 {
                     "name": "",
-                    "id": "95ffcfad-2e15-4783-a35c-0ee9b02d122f",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Tap",
+                    "id": "ce1a399b-dbae-4fac-8fd2-82e06a48e7da",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(pressPoint=0.3,behavior=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",

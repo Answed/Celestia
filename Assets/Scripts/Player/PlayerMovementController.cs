@@ -16,6 +16,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool onGround;
     private float nextDash;
     private bool isDashing;
+    private bool canDash;
 
     private Rigidbody rb;
     private InputHandler inputHandler;
@@ -45,17 +46,21 @@ public class PlayerMovementController : MonoBehaviour
             inputHandler.jump = 0;
         }
 
-        if(inputHandler.dash == 1 && nextDash <= Time.time)
+        if(inputHandler.dash == true && nextDash <= Time.time && canDash)
         {
             isDashing = true;
-            inputHandler.dash = 0;
+            inputHandler.dash = false;
             rb.AddForce((playerObject.forward * moveDir.y + playerObject.right * moveDir.x) * dashForce, ForceMode.Impulse);    
             nextDash = Time.time + dashDelay;
             StartCoroutine(isDahsing());
         }
 
         if (inputHandler.sprint == 1)
-           vel = movementSpeed * 10 * Time.deltaTime * sprintMultiplyer *  (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+        {
+            vel = movementSpeed * 10 * Time.deltaTime * sprintMultiplyer * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
+            canDash = true;
+            StartCoroutine(CantDash());
+        }
         else if (inputHandler.crouch == 1)
             vel = movementSpeed * 10 * Time.deltaTime * crouchMultiplyer * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
         else vel = movementSpeed * 10 * Time.deltaTime * (playerObject.forward * moveDir.y + playerObject.right * moveDir.x);
@@ -86,5 +91,11 @@ public class PlayerMovementController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         isDashing = false;
 
+    }
+
+    IEnumerator CantDash()
+    {
+        yield return new WaitForSeconds(0.3f);
+        canDash = false;
     }
 }
