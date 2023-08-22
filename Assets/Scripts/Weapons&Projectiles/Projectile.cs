@@ -25,4 +25,9 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(destroyDelay);
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
