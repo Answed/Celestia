@@ -11,6 +11,7 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public float dash = 0;
     [HideInInspector] public float crouch = 0;
     [HideInInspector] public float zoom = 0;
+    [HideInInspector] public float attack1 = 0;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -39,5 +40,10 @@ public class InputHandler : MonoBehaviour
     public void OnZoom(InputAction.CallbackContext ctx)
     {
         zoom = ctx.ReadValue<float>();
+    }
+
+    public void OnAttack1(InputAction.CallbackContext ctx)
+    {
+        attack1 = ctx.ReadValue<float>();
     }
 }
