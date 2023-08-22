@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,10 +15,14 @@ public class ThirdPersonCam : MonoBehaviour
 
     public float rotationSpeed;
 
+    private CinemachineFreeLook cam;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; // Will be removed later on just for testing
+
+        cam = GetComponent<CinemachineFreeLook>();
     }
 
 
@@ -35,7 +40,10 @@ public class ThirdPersonCam : MonoBehaviour
         orientation.forward = dirToCombatLookAt.normalized;
 
         playerObj.forward = dirToCombatLookAt.normalized;
-        
 
+        if (inputHandler.zoom > 0 && cam.m_Lens.FieldOfView > 30)
+            cam.m_Lens.FieldOfView -= 1;
+        else if(inputHandler.zoom < 0 && cam.m_Lens.FieldOfView < 70)
+            cam.m_Lens.FieldOfView += 1;
     }
 }

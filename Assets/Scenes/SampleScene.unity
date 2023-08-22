@@ -1196,6 +1196,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8504ed80-f88d-4b9a-8d4e-abb5c7d3d810
     m_ActionName: Player/Crouch[/Keyboard/ctrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 984466971}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd32deb3-82a9-4ebd-b57c-2b214730b83a
+    m_ActionName: Player/Zoom[/Mouse/scroll/up]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1218,6 +1234,7 @@ MonoBehaviour:
   sprint: 0
   dash: 0
   crouch: 0
+  zoom: 0
 --- !u!114 &984466972
 MonoBehaviour:
   m_ObjectHideFlags: 0
