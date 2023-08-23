@@ -9,6 +9,7 @@ public enum EnemyState
 {
     Idle,
     Move,
+    Patrol,
     Follow,
     Invisible,
     Chase,
@@ -19,6 +20,7 @@ public enum EnemyState
 public class EnemyMovementController : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private int startState;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float searchingRadius;
     [SerializeField] private float maxChaseTime;
@@ -32,6 +34,9 @@ public class EnemyMovementController : MonoBehaviour
     [SerializeField] private float teleportProbability;
     [SerializeField] private float teleportDelay;
 
+    [SerializeField] private bool patrolInCircle;
+    [SerializeField] private Transform[] patrolPoints;
+
     private NavMeshAgent agent;
     private bool isRotating; //Is needed to prevent multiple callings of the method
     private bool isMoving; // So he doesen't move and looks around at the same time
@@ -44,6 +49,8 @@ public class EnemyMovementController : MonoBehaviour
     private float invisTime;
     private float nextPointUpdate;
     private float nextTeleport;
+    private int currentPatrolPoint;
+    private bool patrolUp;
 
     private int currentDegree;
 
@@ -67,7 +74,9 @@ public class EnemyMovementController : MonoBehaviour
             {EnemyState.SpecialAttack1, UpdateSpecialAttack1State},
         };
         currentState = new EnemyState();
-        currentState = EnemyState.Move;
+
+        SetBaseState();
+        
         lastPlayerPosition = transform; //Player was never found so the start point is josh position
     }
 
@@ -118,6 +127,16 @@ public class EnemyMovementController : MonoBehaviour
         if (enemyView.playerFound) currentState = EnemyState.Follow;
         else lastPlayerPosition = CurrentTarget();
     }
+
+    private void UpdatePatrolState()
+    {
+        agent.speed = moveSpeed;
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            agent.SetDestination(NextPatrolPoint());
+        }
+    }
+
     private void UpdateFollowState()
     {
         agent.speed = moveSpeed / 2; //Will be changed later on. Just for testing right now
@@ -244,9 +263,49 @@ public class EnemyMovementController : MonoBehaviour
             enemyView.player.position.z + orbitDistance * (float)Math.Sin(currentDegree * Math.PI / 180F));
     }
 
+    private Vector3 NextPatrolPoint()
+    {
+        if (patrolInCircle)
+        {
+            currentPatrolPoint++;
+            if(currentPatrolPoint >= patrolPoints.Length) 
+                currentPatrolPoint = 0;
+            return patrolPoints[currentPatrolPoint].position;
+        }
+        else
+        {
+            if (patrolUp)
+            {
+                currentPatrolPoint++;
+                if (currentPatrolPoint == patrolPoints.Length)
+                    patrolUp = false;
+            }
+            else
+            {
+                currentPatrolPoint--;
+                if (currentPatrolPoint == 0)
+                    patrolUp = true;
+            }
+            return patrolPoints[currentPatrolPoint].position;
+        }
+    }
+
     private int StartDegree()
     {
         float skalarproduct = Vector3.Dot(enemyView.player.forward, transform.position);
         return (int)Math.Acos(skalarproduct / enemyView.player.forward.magnitude * transform.position.magnitude);
+    }
+
+    private void SetBaseState()
+    {
+        switch(startState)
+        {
+            case 0:
+                currentState = EnemyState.Idle; break;
+            case 1:
+                currentState = EnemyState.Move; break;
+            case 2:
+                currentState = EnemyState.Patrol; break;
+        }    
     }
 }
