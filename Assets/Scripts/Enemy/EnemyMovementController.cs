@@ -50,11 +50,11 @@ public class EnemyMovementController : MonoBehaviour
     private Dictionary<EnemyState, Action> stateHandlers;
     private EnemyState currentState;
     private Transform lastPlayerPosition;
-    private JoshFieldOfView joshView;
+    private EnemyFieldOfView enemyView;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        joshView = GetComponent<JoshFieldOfView>();
+        enemyView = GetComponent<EnemyFieldOfView>();
         agent.speed = moveSpeed;
         stateHandlers = new Dictionary<EnemyState, Action>
         {
@@ -77,7 +77,7 @@ public class EnemyMovementController : MonoBehaviour
         if (stateHandlers.TryGetValue(currentState, out Action handler))
             handler.Invoke();
 
-        if (joshView.playerFound)
+        if (enemyView.playerFound)
         {
             StopAllCoroutines();
             isMoving = true;
@@ -115,15 +115,15 @@ public class EnemyMovementController : MonoBehaviour
                 }
             }
         }
-        if (joshView.playerFound) currentState = EnemyState.Follow;
+        if (enemyView.playerFound) currentState = EnemyState.Follow;
         else lastPlayerPosition = CurrentTarget();
     }
     private void UpdateFollowState()
     {
         agent.speed = moveSpeed / 2; //Will be changed later on. Just for testing right now
-        agent.SetDestination(joshView.player.position);
+        agent.SetDestination(enemyView.player.position);
 
-        if (!joshView.playerFound)
+        if (!enemyView.playerFound)
         {
             currentState = EnemyState.Move;
             lastPlayerPosition = CurrentTarget();
@@ -150,8 +150,8 @@ public class EnemyMovementController : MonoBehaviour
     }
     private void UpdateInvisibleState()
     {
-        agent.SetDestination(joshView.player.position);
-        if (!joshView.playerFound || invisTime >= currentMaxInvisTime)
+        agent.SetDestination(enemyView.player.position);
+        if (!enemyView.playerFound || invisTime >= currentMaxInvisTime)
         {
             gameObject.GetComponent<MeshRenderer>().enabled = true;
             lastPlayerPosition = CurrentTarget();
@@ -162,7 +162,7 @@ public class EnemyMovementController : MonoBehaviour
     private void UpdateChaseState()
     {
         agent.speed = moveSpeed * 2;
-        agent.SetDestination(joshView.player.position);
+        agent.SetDestination(enemyView.player.position);
 
         if (chaseTime >= currentMaxChaseTime)
         {
@@ -227,26 +227,26 @@ public class EnemyMovementController : MonoBehaviour
 
         isMoving = true;
 
-        if (joshView.playerFound)
+        if (enemyView.playerFound)
             currentState = EnemyState.Follow;
         else currentState = EnemyState.Move;
     }
     private Transform CurrentTarget() // Ensures that the code doesen't break in the beginning
     {
-        if (joshView.player != null)
-            return joshView.player;
+        if (enemyView.player != null)
+            return enemyView.player;
         return transform;
     }
 
     private Vector3 nextPointOnCircle(int currentDegree) // Will be used to calculate the Next point on the orbit around the player
     {
-        return new Vector3(joshView.player.position.x + orbitDistance * (float)Math.Cos(currentDegree * Math.PI / 180F), joshView.player.position.y,
-            joshView.player.position.z + orbitDistance * (float)Math.Sin(currentDegree * Math.PI / 180F));
+        return new Vector3(enemyView.player.position.x + orbitDistance * (float)Math.Cos(currentDegree * Math.PI / 180F), joshView.player.position.y,
+            enemyView.player.position.z + orbitDistance * (float)Math.Sin(currentDegree * Math.PI / 180F));
     }
 
     private int StartDegree()
     {
-        float skalarproduct = Vector3.Dot(joshView.player.forward, transform.position);
-        return (int)Math.Acos(skalarproduct / joshView.player.forward.magnitude * transform.position.magnitude);
+        float skalarproduct = Vector3.Dot(enemyView.player.forward, transform.position);
+        return (int)Math.Acos(skalarproduct / enemyView.player.forward.magnitude * transform.position.magnitude);
     }
 }
