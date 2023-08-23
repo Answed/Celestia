@@ -7,7 +7,7 @@ public class FieldOfViewEditor : Editor
     private void OnSceneGUI()
     {
         EnemyFieldOfView fov = (EnemyFieldOfView)target;
-        Handles.color = Color.white;
+        Handles.color = Color.red;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.viewingDistance);
 
         Vector3 viewAngle01 = DirectionFromAngle(fov.transform.eulerAngles.y, -fov.fieldOfView / 2);

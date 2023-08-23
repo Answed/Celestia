@@ -240,7 +240,7 @@ public class EnemyMovementController : MonoBehaviour
 
     private Vector3 nextPointOnCircle(int currentDegree) // Will be used to calculate the Next point on the orbit around the player
     {
-        return new Vector3(enemyView.player.position.x + orbitDistance * (float)Math.Cos(currentDegree * Math.PI / 180F), joshView.player.position.y,
+        return new Vector3(enemyView.player.position.x + orbitDistance * (float)Math.Cos(currentDegree * Math.PI / 180F), enemyView.player.position.y,
             enemyView.player.position.z + orbitDistance * (float)Math.Sin(currentDegree * Math.PI / 180F));
     }
 
