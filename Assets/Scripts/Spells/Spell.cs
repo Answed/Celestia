@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
-public class Spell : MonoBehaviour
+public interface Spell
 {
-    public float spellDamage;
-    public float spellCooldown;
-    public GameObject[] projectiles;
-    public GameObject[] effects;
+    void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection);
 }

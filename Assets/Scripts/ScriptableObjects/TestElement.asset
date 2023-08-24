@@ -12,7 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5893deddb1825854c89a25e68f63dd3b, type: 3}
   m_Name: TestElement
   m_EditorClassIdentifier: 
-  Attack1: {fileID: 7148678593777729431, guid: b9a660c7e3ba3f945a0075253d3485d2, type: 3}
-  Attack2: {fileID: 7148678593777729431, guid: b9a660c7e3ba3f945a0075253d3485d2, type: 3}
-  Attack3: {fileID: 7148678593777729431, guid: b9a660c7e3ba3f945a0075253d3485d2, type: 3}
-  Ultimate: {fileID: 7148678593777729431, guid: b9a660c7e3ba3f945a0075253d3485d2, type: 3}

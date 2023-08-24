@@ -11,6 +11,9 @@ public class PlayerCombatController : MonoBehaviour
     private InputHandler inputHandler;
     private Transform projectileSpawnPoint;
     private Transform projectileDirection;
+    private ElementsManager elementsManager;
+
+    private Element currentElement;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,8 @@ public class PlayerCombatController : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         projectileSpawnPoint = GameObject.Find("CombatLookAt").GetComponent<Transform>();
         projectileDirection = GameObject.Find("PlayerCam").GetComponent<Transform>();
+        elementsManager = GetComponent<ElementsManager>();
+        currentElement = elementsManager.elements[0];
     }
 
     // Update is called once per frame
@@ -26,15 +31,7 @@ public class PlayerCombatController : MonoBehaviour
         if (inputHandler.attack1 == 1 && nextAttack < Time.time)
         {
             nextAttack = Time.time + attackDelay;
-            BasicAttack();
+            currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
         }
-    }
-
-    private void BasicAttack()
-    {
-        GameObject currentProjectile = Instantiate(magic.Attack1, projectileSpawnPoint.position, Quaternion.identity);
-        Debug.Log(projectileSpawnPoint.forward);
-        currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward);
-
     }
 }
