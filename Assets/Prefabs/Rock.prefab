@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9868526c7fb6ed6448cce03582fed368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 25
+  throwForce: 50
   destroyDelay: 5
 --- !u!54 &3857470742566690037
 Rigidbody:

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5893deddb1825854c89a25e68f63dd3b, type: 3}
   m_Name: TestElement
   m_EditorClassIdentifier: 
+  basicAttack: {fileID: 5519581084675528283, guid: 65fa4333273e662469248f2578f9312c, type: 3}
+  Spell: {fileID: 0}
+  Spell2: {fileID: 0}
+  Ultimate: {fileID: 0}

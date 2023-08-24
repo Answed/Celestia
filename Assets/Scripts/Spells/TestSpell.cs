@@ -8,15 +8,21 @@ public class TestSpell : MonoBehaviour,Spell
     [SerializeField] private float spellCooldown;
     [SerializeField] private GameObject spellPrefab;
 
-    private float nextCast = 0;
+    private float nextCast;
 
     public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection)
     {
-        if(nextCast<= Time.time)
+        if (nextCast <= Time.time)
         {
             nextCast = Time.time + spellCooldown;
             GameObject currentProjectile = Instantiate(spellPrefab, projectileSpawnPoint.position, Quaternion.identity);
             currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward);
         }
     }
+
+    public void ResetSpell()
+    {
+        nextCast = 0;
+    }
+
 }
