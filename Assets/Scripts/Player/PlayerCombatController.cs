@@ -13,7 +13,7 @@ public class PlayerCombatController : MonoBehaviour
     private Transform projectileDirection;
     private ElementsManager elementsManager;
 
-    private Element currentElement;
+    private MagicElement currentElement;
 
     // Start is called before the first frame update
     void Start()
