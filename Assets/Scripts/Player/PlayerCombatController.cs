@@ -26,13 +26,25 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputHandler.basicAttack == 1)
+        if (inputHandler.basicAttack == 1 || inputHandler.basicAttackReleased)
+        {
             currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.basicAttackReleased);
-        if(inputHandler.spell1 == 1)
+            inputHandler.basicAttackReleased = false;
+        }
+        if(inputHandler.spell1 == 1 || inputHandler.spell1Released)
+        {
             currentElement.spell.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell1Released);
-        if(inputHandler.spell2 == 1)
-            currentElement.spell2.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell1Released);
-        if(inputHandler.ultimate == 1)
+            inputHandler.spell1Released = false;
+        }
+        if(inputHandler.spell2 == 1 || inputHandler.spell2Released)
+        {
+            currentElement.spell2.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell2Released);
+            inputHandler.spell2Released = false;
+        }
+        if(inputHandler.ultimate == 1 || inputHandler.ultimateReleased)
+        {
             currentElement.ultimate.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.ultimateReleased);
+            inputHandler.ultimateReleased = false;
+        }
     }
 }

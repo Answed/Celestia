@@ -17,6 +17,7 @@ public class Quicksand : MonoBehaviour, Spell
     {
         if(nextCast <= Time.time)
         {
+            Debug.Log(releasedSpell);
             if (!displayArea)
             {
                 spellArea = Instantiate(spellPrefab);
@@ -24,6 +25,7 @@ public class Quicksand : MonoBehaviour, Spell
             }
             if (releasedSpell)
             {
+                Debug.Log("Hmm Sus");
                 displayArea = false;
                 nextCast = Time.time + spellCooldown;
             }

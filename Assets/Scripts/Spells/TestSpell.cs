@@ -10,7 +10,7 @@ public class TestSpell : MonoBehaviour,Spell
 
     private float nextCast;
 
-    public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection, bool spellReleased = false)
+    public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection, bool spellReleased)
     {
         if (nextCast <= Time.time)
         {
