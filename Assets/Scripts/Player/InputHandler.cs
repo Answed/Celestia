@@ -11,7 +11,10 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public bool dash = false;
     [HideInInspector] public float crouch = 0;
     [HideInInspector] public float zoom = 0;
-    [HideInInspector] public float attack1 = 0;
+    [HideInInspector] public float basicAttack = 0;
+    [HideInInspector] public float spell1 = 0;
+    [HideInInspector] public float spell2 = 0;
+    [HideInInspector] public float ultimate = 0;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -42,8 +45,23 @@ public class InputHandler : MonoBehaviour
         zoom = ctx.ReadValue<float>();
     }
 
-    public void OnAttack1(InputAction.CallbackContext ctx)
+    public void OnBasicAttack(InputAction.CallbackContext ctx)
     {
-        attack1 = ctx.ReadValue<float>();
+        basicAttack = ctx.ReadValue<float>();
+    }
+
+    public void OnSpell1(InputAction.CallbackContext ctx)
+    {
+        spell1 = ctx.ReadValue<float>();
+    }
+
+    public void OnSpell2(InputAction.CallbackContext ctx)
+    {
+        spell2 = ctx.ReadValue<float>();
+    }
+
+    public void OnUltimate(InputAction.CallbackContext ctx)
+    {
+        ultimate  = ctx.ReadValue<float>();
     }
 }

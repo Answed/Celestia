@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerCombatController : MonoBehaviour
 {
     [SerializeField] private MagicElement magic;
-    [SerializeField] private float attackDelay;
 
-    private float nextAttack;
     private InputHandler inputHandler;
     private Transform projectileSpawnPoint;
     private Transform projectileDirection;
@@ -28,9 +26,8 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputHandler.attack1 == 1 && nextAttack < Time.time)
+        if (inputHandler.basicAttack == 1)
         {
-            nextAttack = Time.time + attackDelay;
             currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
         }
     }
