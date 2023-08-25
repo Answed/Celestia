@@ -16,7 +16,6 @@ public class Projectile : MonoBehaviour
 
     public void ThrowProjectile(Vector3 direction)
     {
-        Debug.Log(rb);
         rb.AddForce(direction * throwForce, ForceMode.Impulse);
     }
 

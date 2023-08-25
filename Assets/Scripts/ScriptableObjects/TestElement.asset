@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestElement
   m_EditorClassIdentifier: 
   basicAttack: {fileID: 5519581084675528283, guid: 65fa4333273e662469248f2578f9312c, type: 3}
-  Spell: {fileID: 0}
-  Spell2: {fileID: 0}
-  Ultimate: {fileID: 0}
+  spell: {fileID: 3557042777291482449, guid: d01fb3aa5649d2b4da86327d1a0bc358, type: 3}
+  spell2: {fileID: 0}
+  ultimate: {fileID: 0}

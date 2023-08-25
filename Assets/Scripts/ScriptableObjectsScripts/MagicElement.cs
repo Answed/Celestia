@@ -4,7 +4,7 @@ using UnityEngine;
 public class MagicElement : ScriptableObject
 {
     public GameObject basicAttack;
-    public GameObject Spell;
-    public GameObject Spell2;
-    public GameObject Ultimate;
+    public GameObject spell;
+    public GameObject spell2;
+    public GameObject ultimate;
 }

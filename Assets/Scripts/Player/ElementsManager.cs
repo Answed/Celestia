@@ -17,9 +17,9 @@ public class ElementsManager : MonoBehaviour
         foreach (MagicElement element in elements)
         {
             element.basicAttack.GetComponent<Spell>().ResetSpell();
-            element.Spell.GetComponent<Spell>().ResetSpell();
-            element.Spell2.GetComponent<Spell>().ResetSpell();
-            element.Ultimate.GetComponent<Spell>().ResetSpell();
+            element.spell.GetComponent<Spell>().ResetSpell();
+            element.spell2.GetComponent<Spell>().ResetSpell();
+            element.ultimate.GetComponent<Spell>().ResetSpell();
         }
     }
 }
