@@ -37,7 +37,7 @@ public class EnemyMovementController : MonoBehaviour
     [SerializeField] private bool patrolInCircle;
     [SerializeField] private Transform[] patrolPoints;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private bool isRotating; //Is needed to prevent multiple callings of the method
     private bool isMoving; // So he doesen't move and looks around at the same time
 
