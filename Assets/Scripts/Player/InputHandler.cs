@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,9 +13,13 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public float crouch = 0;
     [HideInInspector] public float zoom = 0;
     [HideInInspector] public float basicAttack = 0;
+    [HideInInspector] public bool basicAttackReleased;
     [HideInInspector] public float spell1 = 0;
+    [HideInInspector] public bool spell1Released;
     [HideInInspector] public float spell2 = 0;
+    [HideInInspector] public bool spell2Released;
     [HideInInspector] public float ultimate = 0;
+    [HideInInspector] public bool ultimateReleased;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -48,20 +53,24 @@ public class InputHandler : MonoBehaviour
     public void OnBasicAttack(InputAction.CallbackContext ctx)
     {
         basicAttack = ctx.ReadValue<float>();
+        basicAttackReleased = ctx.canceled;
     }
 
     public void OnSpell1(InputAction.CallbackContext ctx)
     {
         spell1 = ctx.ReadValue<float>();
+        spell1Released = ctx.canceled;
     }
 
     public void OnSpell2(InputAction.CallbackContext ctx)
     {
         spell2 = ctx.ReadValue<float>();
+        spell2Released = ctx.canceled;
     }
 
     public void OnUltimate(InputAction.CallbackContext ctx)
     {
         ultimate  = ctx.ReadValue<float>();
+        ultimateReleased = ctx.canceled;
     }
 }

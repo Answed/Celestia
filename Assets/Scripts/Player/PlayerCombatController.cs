@@ -27,12 +27,12 @@ public class PlayerCombatController : MonoBehaviour
     void Update()
     {
         if (inputHandler.basicAttack == 1)
-            currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
+            currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.basicAttackReleased);
         if(inputHandler.spell1 == 1)
-            currentElement.spell.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
+            currentElement.spell.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell1Released);
         if(inputHandler.spell2 == 1)
-            currentElement.spell2.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
+            currentElement.spell2.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell1Released);
         if(inputHandler.ultimate == 1)
-            currentElement.ultimate.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection);
+            currentElement.ultimate.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.ultimateReleased);
     }
 }

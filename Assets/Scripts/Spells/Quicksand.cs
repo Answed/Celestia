@@ -13,14 +13,22 @@ public class Quicksand : MonoBehaviour, Spell
     private bool displayArea;
     private GameObject spellArea;
 
-    public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection)
+    public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection, bool releasedSpell)
     {
-        if (!displayArea)
+        if(nextCast <= Time.time)
         {
-            spellArea = Instantiate(spellPrefab);
-            displayArea = true;
+            if (!displayArea)
+            {
+                spellArea = Instantiate(spellPrefab);
+                displayArea = true;
+            }
+            if (releasedSpell)
+            {
+                displayArea = false;
+                nextCast = Time.time + spellCooldown;
+            }
+            DisplaySpellArea(projectileSpawnPoint, projectileDirection);
         }
-        DisplaySpellArea(projectileSpawnPoint, projectileDirection);
     }
 
     public void ResetSpell()
@@ -32,17 +40,13 @@ public class Quicksand : MonoBehaviour, Spell
     private void DisplaySpellArea(Transform projectileSpawnPoint, Transform projectileDirection)
     {
         RaycastHit hit;
-        Debug.DrawRay(projectileSpawnPoint.position, projectileDirection.forward);
 
         if (Physics.Raycast(projectileSpawnPoint.position, projectileDirection.forward, out hit, spellLayerMask))
         {
-            Debug.Log(hit.point);
             if (hit.collider.CompareTag("Ground"))
             {
                 spellArea.transform.position = new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z);
             }
         }
     }
-
-
 }
