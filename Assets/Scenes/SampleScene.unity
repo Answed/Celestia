@@ -1662,6 +1662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   poisenResistence: 0
+  health: 0
 --- !u!136 &1268725021
 CapsuleCollider:
   m_ObjectHideFlags: 0

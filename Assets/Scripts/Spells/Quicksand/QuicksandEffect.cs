@@ -30,7 +30,8 @@ public class QuicksandEffect : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            enemy.GetComponent<EnemyMovementController>().currentState = EnemyState.Move;
+            if(enemy != null)
+                enemy.GetComponent<EnemyMovementController>().currentState = EnemyState.Move;
         }
 
         Destroy(gameObject);

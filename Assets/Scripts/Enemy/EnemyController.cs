@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float poisenResistence;
 
-    private float health;   
+    public float health;   
 
 
     // Start is called before the first frame update
