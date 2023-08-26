@@ -7,6 +7,7 @@ public class Quicksand : MonoBehaviour, Spell
     [SerializeField] private float spellDamage;
     [SerializeField] private float spellTime;
     [SerializeField] private float spellCooldown;
+    [SerializeField] private GameObject spellAreaPrefab;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private LayerMask spellLayerMask;
 
@@ -21,14 +22,14 @@ public class Quicksand : MonoBehaviour, Spell
         {
             if (!displayArea)
             {
-                spellArea = Instantiate(spellPrefab);
+                spellArea = Instantiate(spellAreaPrefab);
                 displayArea = true;
             }
             if (releasedSpell)
             {
                 displayArea = false;
                 nextCast = Time.time + spellCooldown;
-                StartCoroutine(DestroyAfterTime());
+                PlaceSpell();
             }
             DisplaySpellArea(projectileSpawnPoint, projectileDirection);
         }
@@ -53,23 +54,12 @@ public class Quicksand : MonoBehaviour, Spell
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void PlaceSpell()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<EnemyMovementController>().agent.speed = 0;
-            enemiesInCollider.Add(collision.gameObject);
-        }
-    }
-
-    IEnumerator DestroyAfterTime()
-    {
-        yield return new WaitForSeconds(spellTime);
-        foreach (var e in enemiesInCollider)
-        {
-            e.GetComponent<EnemyMovementController>().agent.speed = 0;
-        }
+        Vector3 spellPosition = spellArea.transform.position;
         Destroy(spellArea);
+        GameObject spell =  Instantiate(spellPrefab, spellPosition, Quaternion.identity);
+        spell.GetComponent<QuicksandEffect>().spellDuration = spellTime;
     }
 
 }

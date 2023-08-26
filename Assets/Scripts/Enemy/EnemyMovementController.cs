@@ -15,6 +15,7 @@ public enum EnemyState
     Chase,
     RegularAttack1, // There will be more 
     SpecialAttack1, // Want to make the framework work first
+    Trapped
 }
 
 public class EnemyMovementController : MonoBehaviour
@@ -22,6 +23,7 @@ public class EnemyMovementController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private int startState;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float trappedSpeed;
     [SerializeField] private float searchingRadius;
     [SerializeField] private float maxChaseTime;
     [SerializeField] private float chaseProbability; // The higher the value the higher the probability. Shouldn't be higher than 50% -> 0.5
@@ -55,7 +57,7 @@ public class EnemyMovementController : MonoBehaviour
     private int currentDegree;
 
     private Dictionary<EnemyState, Action> stateHandlers;
-    private EnemyState currentState;
+    public EnemyState currentState;
     private Transform lastPlayerPosition;
     private EnemyFieldOfView enemyView;
     void Start()
@@ -72,6 +74,7 @@ public class EnemyMovementController : MonoBehaviour
             {EnemyState.Chase, UpdateChaseState},
             {EnemyState.RegularAttack1, UpdateRegularAttack1State},
             {EnemyState.SpecialAttack1, UpdateSpecialAttack1State},
+            {EnemyState.Trapped, UpdateTrappedState}
         };
         currentState = new EnemyState();
 
@@ -197,6 +200,11 @@ public class EnemyMovementController : MonoBehaviour
     private void UpdateSpecialAttack1State()
     {
         //Not sure what to implement here
+    }
+
+    private void UpdateTrappedState()
+    {
+        agent.speed = trappedSpeed;
     }
     private bool RandomPointOnNavMesh(Vector3 center, float range, out Vector3 result)
     {

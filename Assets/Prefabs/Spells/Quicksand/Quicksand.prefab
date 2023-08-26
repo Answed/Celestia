@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 5
-  spellCooldown: 5
-  spellPrefab: {fileID: 691681221393832117, guid: cbc744e4e927c2046a6de269575d8567, type: 3}
+  spellTime: 4
+  spellCooldown: 9
+  spellAreaPrefab: {fileID: 691681221393832117, guid: cbc744e4e927c2046a6de269575d8567, type: 3}
+  spellPrefab: {fileID: 691681221393832117, guid: e1d6cb8c9eee35a489b037bc1d7cb88a, type: 3}
   spellLayerMask:
     serializedVersion: 2
     m_Bits: 34
