@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Quicksand : MonoBehaviour, Spell
 {
-    [SerializeField] private float spellDamage;
     [SerializeField] private float spellTime;
     [SerializeField] private float spellCooldown;
     [SerializeField] private GameObject spellAreaPrefab;
@@ -27,7 +26,7 @@ public class Quicksand : MonoBehaviour, Spell
             if (releasedSpell)
             {
                 displayArea = false;
-                nextCast = Time.time + spellCooldown;
+                nextCast = Time.time + spellCooldown + spellTime;
                 PlaceSpell();
             }
             DisplaySpellArea(projectileSpawnPoint, projectileDirection);

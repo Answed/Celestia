@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicAttack: {fileID: 5519581084675528283, guid: 65fa4333273e662469248f2578f9312c, type: 3}
   spell: {fileID: 3557042777291482449, guid: d01fb3aa5649d2b4da86327d1a0bc358, type: 3}
-  spell2: {fileID: 0}
+  spell2: {fileID: 3231014754464338186, guid: 57b0059882dd483438f0afb58ca0c1d2, type: 3}
   ultimate: {fileID: 0}

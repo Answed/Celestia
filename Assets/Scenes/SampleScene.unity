@@ -715,7 +715,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 100
+    m_MaxSpeed: 150
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -1661,6 +1661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
+  poisenResistence: 0
 --- !u!136 &1268725021
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1725,8 +1726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25d1757d934a5d40968e57e92a633d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: 0
+  startState: 1
   moveSpeed: 5
+  trappedSpeed: 0
   searchingRadius: 5
   maxChaseTime: 5
   chaseProbability: 0.2
@@ -1741,6 +1743,7 @@ MonoBehaviour:
   patrolInCircle: 0
   patrolPoints: []
   agent: {fileID: 0}
+  currentState: 0
 --- !u!195 &1268725025
 NavMeshAgent:
   m_ObjectHideFlags: 0
