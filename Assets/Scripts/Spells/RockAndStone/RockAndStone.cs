@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockAndStone : MonoBehaviour
+public class RockAndStone : MonoBehaviour, Spell
 {
     [SerializeField] private float spellDamage;
     [SerializeField] private float spellCooldown;

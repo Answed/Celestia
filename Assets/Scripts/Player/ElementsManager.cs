@@ -9,6 +9,7 @@ public class ElementsManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Debug.Log(elements[0].name);
         ResetAllSpells(elements);
     }
 
@@ -16,6 +17,7 @@ public class ElementsManager : MonoBehaviour
     {
         foreach (MagicElement element in elements)
         {
+            Debug.Log(element.name);
             element.basicAttack.GetComponent<Spell>().ResetSpell();
             element.spell.GetComponent<Spell>().ResetSpell();
             element.spell2.GetComponent<Spell>().ResetSpell();
