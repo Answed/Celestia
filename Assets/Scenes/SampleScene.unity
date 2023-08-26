@@ -1365,7 +1365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elements:
-  - {fileID: 11400000, guid: 6cd58a7d32a8738409ff4961e2d483fe, type: 2}
+  - {fileID: 11400000, guid: 4dbf0b29adcd1364bbc822cbda3f6e54, type: 2}
+  - {fileID: 11400000, guid: 4dbf0b29adcd1364bbc822cbda3f6e54, type: 2}
 --- !u!1 &1003446192
 GameObject:
   m_ObjectHideFlags: 0
