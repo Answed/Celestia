@@ -25,7 +25,8 @@ public class StingingNettle : MonoBehaviour, Spell
                 Vector3 point;
                 if(RandomPointOnNavMesh(playerPosition.position, spellArea, out point))
                 {
-                    Instantiate(spellPrefab, point, Quaternion.identity);
+                    GameObject flower = Instantiate(spellPrefab, point, Quaternion.identity);
+                    flower.GetComponent<StiningNettleEffect>().spellDuration = spellTime;
                 }
             }
         }
