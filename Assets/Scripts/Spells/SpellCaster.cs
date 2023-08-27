@@ -29,6 +29,7 @@ public class SpellCaster : MonoBehaviour
     private Spell currentSpell;
     private SpecialEffect specialEffects;
     private bool displayArea;
+    private GameObject target;
 
     public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection,Spell selectedSpell, bool spellReleased)
     {
@@ -36,7 +37,9 @@ public class SpellCaster : MonoBehaviour
 
         if(currentSpell.nextCast <= Time.time)
         {
-            currentSpell.nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
+            if(currentSpell.homing)
+                target = FindTarget(projectileSpawnPoint, projectileDirection);
+
             switch (currentSpell.typeOfSpell)
             {
                 case TypeOfSpell.Projectile:
@@ -51,8 +54,10 @@ public class SpellCaster : MonoBehaviour
                 case TypeOfSpell.SelfCast:
                     break;
                 case TypeOfSpell.OtherCast:
+                    OtherCast(target);
                     break;
             }
+            currentSpell.nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
         }
     }
     
@@ -70,7 +75,7 @@ public class SpellCaster : MonoBehaviour
             Vector3 point;
             if (RandomPointOnNavMesh(playerPosition.position, currentSpell.spellRange, out point))
             {
-                GameObject flower = Instantiate(currentSpell.spellObjectPrefab, point, Quaternion.identity);
+                GameObject spellObject = Instantiate(currentSpell.spellObjectPrefab, point, Quaternion.identity);
                 // Can be used to apply all the missing values.
             }
         }
@@ -96,9 +101,9 @@ public class SpellCaster : MonoBehaviour
         //Not a clue how i want to apply the effects to the player Probably with a list or something
     }
 
-    private void OtherCast(Transform projectileSpawnPoint, Transform projectileDirection, GameObject target)
+    private void OtherCast(GameObject target)
     {
-        // Could also Implement a raycast system so the target gets decided when the player uses the spell.
+        // Not sure how the effects will be aplied 
     }
 
     private void ChangeRadiousOfSpellArea()
@@ -114,9 +119,7 @@ public class SpellCaster : MonoBehaviour
         if (Physics.Raycast(projectileSpawnPoint.position, projectileDirection.forward, out hit, currentSpell.spellLayerMask))
         {
             if (hit.collider.CompareTag("Ground"))
-            {
                 areaDisplay.transform.position = new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z);
-            }
         }
     }
 
@@ -139,6 +142,18 @@ public class SpellCaster : MonoBehaviour
         Destroy(areaDisplay);
         GameObject spell = Instantiate(currentSpell.spellObjectPrefab, spellPosition, Quaternion.identity);
         // Can be used to apply all the missing values.
+    }
+
+    private GameObject FindTarget(Transform projectileSpawnPoint, Transform projectileDirection)
+    {
+        RaycastHit hit;
+
+        if(Physics.Raycast(projectileSpawnPoint.position, projectileDirection.forward, out hit, currentSpell.spellLayerMask))
+        {
+            if (hit.collider.CompareTag("Enemy")) 
+                return hit.collider.gameObject;
+        }
+        return null;
     }
 
     //Is requierd so mutliple special effects can be used.
