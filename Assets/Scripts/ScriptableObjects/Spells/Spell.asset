@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5893deddb1825854c89a25e68f63dd3b, type: 3}
-  m_Name: Nature
+  m_Script: {fileID: 11500000, guid: c0a2d6236bfb61840b32e5bad235c8cf, type: 3}
+  m_Name: Spell
   m_EditorClassIdentifier: 
-  basicAttack: {fileID: 0}
-  spell: {fileID: 0}
-  spell2: {fileID: 0}
-  ultimate: {fileID: 0}

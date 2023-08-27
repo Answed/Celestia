@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if(health <= 0) Destroy(gameObject);
+        Debug.Log(health);
     }
 
     private void OnCollisionEnter(Collision collision)

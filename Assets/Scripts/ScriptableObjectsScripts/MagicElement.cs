@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MagicElement", menuName ="Magic Element", order = 0)]
+[CreateAssetMenu(fileName = "MagicElement", menuName ="Magic Element", order = 1)]
 public class MagicElement : ScriptableObject
 {
     public GameObject basicAttack;
