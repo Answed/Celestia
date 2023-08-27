@@ -16,7 +16,10 @@ public class ElementsManager : MonoBehaviour
     {
         foreach (MagicElement element in elements)
         {
-
+            element.basicAttack.nextCast = 0;
+            element.spell.nextCast = 0;
+            element.spell2.nextCast = 0;
+            element.ultimate.nextCast = 0;
         }
     }
 }

@@ -28,16 +28,15 @@ public class SpellCaster : MonoBehaviour
     
     private Spell currentSpell;
     private SpecialEffect specialEffects;
-    private float nextCast;
     private bool displayArea;
 
     public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection,Spell selectedSpell, bool spellReleased)
     {
         currentSpell = selectedSpell;
 
-        if(nextCast <= Time.time)
+        if(currentSpell.nextCast <= Time.time)
         {
-            nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
+            currentSpell.nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
             switch (currentSpell.typeOfSpell)
             {
                 case TypeOfSpell.Projectile:
@@ -59,13 +58,11 @@ public class SpellCaster : MonoBehaviour
     
     private void Projectile(Transform projectileSpawnPoint, Transform projectileDirection)
     {
-            nextCast = Time.time + currentSpell.spellCoolDown;
             GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
             currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell.spellDamage);
     }
     private void SpawnAroundPlayer()
     {
-        nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
         Transform playerPosition = GameObject.Find("Player").GetComponent<Transform>();
 
         for (int i = 0; i < currentSpell.amountOfObjects; i++)
@@ -89,7 +86,6 @@ public class SpellCaster : MonoBehaviour
         if (releasedSpell)
         {
             displayArea = false;
-            nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
             PlaceSpell();
         }
         DisplaySpellArea(projectileSpawnPoint, projectileDirection);

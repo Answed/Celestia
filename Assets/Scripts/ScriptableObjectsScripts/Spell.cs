@@ -18,4 +18,6 @@ public class Spell : ScriptableObject
     public LayerMask spellLayerMask;
     public TypeOfSpell typeOfSpell;
     public SpecialEffect specialEffects;
+
+    public float nextCast;
 }
