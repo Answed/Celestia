@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5893deddb1825854c89a25e68f63dd3b, type: 3}
   m_Name: Nature
   m_EditorClassIdentifier: 
-  basicAttack: {fileID: 1262451357849966144, guid: 64a3be98f7d4ee945ae4001c1f35cd98, type: 3}
-  spell: {fileID: 3557042777291482449, guid: d01fb3aa5649d2b4da86327d1a0bc358, type: 3}
-  spell2: {fileID: 3231014754464338186, guid: 57b0059882dd483438f0afb58ca0c1d2, type: 3}
-  ultimate: {fileID: 8784406033321245755, guid: bef609c7e0a3ed74487622ac9b6ed371, type: 3}
+  basicAttack: {fileID: 0}
+  spell: {fileID: 0}
+  spell2: {fileID: 0}
+  ultimate: {fileID: 0}
