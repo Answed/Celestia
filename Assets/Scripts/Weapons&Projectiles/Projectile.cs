@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(DestroyAfterTime());
     }
 
     public void ThrowProjectile(Vector3 direction, float dm)

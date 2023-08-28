@@ -73,7 +73,8 @@ public class SpellCaster : MonoBehaviour
         target = FindTarget(projectileSpawnPoint, projectileDirection);
         if (released)
         {
-            //Spawn Projectile
+            GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
+            currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell.spellDamage);
         }
     }
 
