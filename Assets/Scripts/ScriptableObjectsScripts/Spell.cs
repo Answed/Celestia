@@ -12,7 +12,6 @@ public class Spell : ScriptableObject
     public float amountOfObjects;
     public float[] specialEffectDuration; //If u select multiple u need to put them in the same order as they are in the list
     public float[] specialEffectDamage;
-    public bool homing;
     public GameObject spellObjectPrefab;
     public GameObject target;
     public LayerMask spellLayerMask;

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public enum TypeOfSpell
 {
     Projectile,
+    HomingProjectile,
     SpawnsAroundPlayer,
     AOE,
     SelfCast,
@@ -37,13 +38,13 @@ public class SpellCaster : MonoBehaviour
 
         if(currentSpell.nextCast <= Time.time)
         {
-            if(currentSpell.homing)
-                target = FindTarget(projectileSpawnPoint, projectileDirection);
-
             switch (currentSpell.typeOfSpell)
             {
                 case TypeOfSpell.Projectile:
                     Projectile(projectileSpawnPoint, projectileDirection);
+                    break;
+                case TypeOfSpell.HomingProjectile:
+                    HomingProjectile(projectileSpawnPoint, projectileDirection, spellReleased);
                     break;
                 case TypeOfSpell.SpawnsAroundPlayer:
                     SpawnAroundPlayer();
@@ -66,6 +67,16 @@ public class SpellCaster : MonoBehaviour
             GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
             currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell.spellDamage);
     }
+
+    private void HomingProjectile(Transform projectileSpawnPoint, Transform projectileDirection, bool released)
+    {
+        target = FindTarget(projectileSpawnPoint, projectileDirection);
+        if (released)
+        {
+            //Spawn Projectile
+        }
+    }
+
     private void SpawnAroundPlayer()
     {
         Transform playerPosition = GameObject.Find("Player").GetComponent<Transform>();
