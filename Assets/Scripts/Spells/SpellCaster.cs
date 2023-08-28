@@ -10,7 +10,8 @@ public enum TypeOfSpell
     SpawnsAroundPlayer,
     AOE,
     SelfCast,
-    OtherCast
+    OtherCast,
+    Test
 }
 
 [Flags]
@@ -30,7 +31,6 @@ public class SpellCaster : MonoBehaviour
     private Spell currentSpell;
     private SpecialEffect specialEffects;
     private bool displayArea;
-    private GameObject target;
 
     public void CastSpell(Transform projectileSpawnPoint, Transform projectileDirection,Spell selectedSpell, bool spellReleased)
     {
@@ -55,7 +55,13 @@ public class SpellCaster : MonoBehaviour
                 case TypeOfSpell.SelfCast:
                     break;
                 case TypeOfSpell.OtherCast:
-                    OtherCast(target);
+                    OtherCast(projectileSpawnPoint, projectileDirection, spellReleased);
+                    break;
+                case TypeOfSpell.Test:
+                    foreach(string effect in currentSpell.specialEffects.ToString().Split(','))
+                    {
+                        Debug.Log(effect);
+                    }
                     break;
             }
             currentSpell.nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;
@@ -70,7 +76,7 @@ public class SpellCaster : MonoBehaviour
 
     private void HomingProjectile(Transform projectileSpawnPoint, Transform projectileDirection, bool released)
     {
-        target = FindTarget(projectileSpawnPoint, projectileDirection);
+        currentSpell.target = FindTarget(projectileSpawnPoint, projectileDirection);
         if (released)
         {
             GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
@@ -113,8 +119,9 @@ public class SpellCaster : MonoBehaviour
         //Not a clue how i want to apply the effects to the player Probably with a list or something
     }
 
-    private void OtherCast(GameObject target)
+    private void OtherCast(Transform projectileSpawnPoint, Transform projectileDirection, bool released)
     {
+        currentSpell.target = FindTarget(projectileSpawnPoint, projectileDirection);
         // Not sure how the effects will be aplied 
     }
 
@@ -166,11 +173,5 @@ public class SpellCaster : MonoBehaviour
                 return hit.collider.gameObject;
         }
         return null;
-    }
-
-    //Is requierd so mutliple special effects can be used.
-    private bool IsValidSpecialEffect(SpecialEffect effect)
-    {
-        return (specialEffects & effect) != 0;
     }
 }

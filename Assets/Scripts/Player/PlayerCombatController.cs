@@ -8,6 +8,7 @@ public class PlayerCombatController : MonoBehaviour
     private Transform projectileSpawnPoint;
     private Transform projectileDirection;
     private ElementsManager elementsManager;
+    private SpellCaster spellCaster;
 
     private MagicElement currentElement;
 
@@ -15,6 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     void Start()
     {
         inputHandler = GetComponent<InputHandler>();
+        spellCaster = GetComponent<SpellCaster>();
         projectileSpawnPoint = GameObject.Find("CombatLookAt").GetComponent<Transform>();
         projectileDirection = GameObject.Find("PlayerCam").GetComponent<Transform>();
         elementsManager = GetComponent<ElementsManager>();
@@ -24,25 +26,25 @@ public class PlayerCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (inputHandler.basicAttack == 1 || inputHandler.basicAttackReleased)
+       if (inputHandler.basicAttack == 1 || inputHandler.basicAttackReleased)
         {
-            currentElement.basicAttack.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.basicAttackReleased);
+            spellCaster.CastSpell(projectileSpawnPoint, projectileDirection, currentElement.basicAttack, inputHandler.basicAttackReleased);
             inputHandler.basicAttackReleased = false;
         }
         if(inputHandler.spell1 == 1 || inputHandler.spell1Released)
         {
-            currentElement.spell.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell1Released);
+            spellCaster.CastSpell(projectileSpawnPoint, projectileDirection, currentElement.basicAttack, inputHandler.spell1Released);
             inputHandler.spell1Released = false;
         }
         if(inputHandler.spell2 == 1 || inputHandler.spell2Released)
         {
-            currentElement.spell2.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.spell2Released);
+            spellCaster.CastSpell(projectileSpawnPoint, projectileDirection, currentElement.basicAttack, inputHandler.spell2Released);
             inputHandler.spell2Released = false;
         }
         if(inputHandler.ultimate == 1 || inputHandler.ultimateReleased)
         {
-            currentElement.ultimate.GetComponent<Spell>().CastSpell(projectileSpawnPoint, projectileDirection, inputHandler.ultimateReleased);
+            spellCaster.CastSpell(projectileSpawnPoint, projectileDirection, currentElement.basicAttack, inputHandler.ultimateReleased);
             inputHandler.ultimateReleased = false;
-        }*/
+        }
     }
 }
