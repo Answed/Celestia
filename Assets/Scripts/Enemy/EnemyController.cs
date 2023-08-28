@@ -24,8 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Projectile"))
-            health -= collision.gameObject.GetComponent<Projectile>().damage;
+
     }
 
     public void Poisend()

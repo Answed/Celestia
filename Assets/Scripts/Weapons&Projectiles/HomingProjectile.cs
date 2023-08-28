@@ -2,24 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomingProjectile : MonoBehaviour
+public class HomingProjectile : SpellTemplate
 {
-    private Spell currentSpell;
     private bool followTarget;
     
 
     // Update is called once per frame
     void Update()
     {
+        if(spell != null)
+            followTarget = true;
+
         if (followTarget)
         {
-            transform.Translate(currentSpell.target.transform.position);
+            transform.Translate(spell.target.transform.position);
         }
     }
 
-    public void SetTarget(Spell spell)
-    {
-        currentSpell = spell;
-        followTarget = true;
-    }
 }

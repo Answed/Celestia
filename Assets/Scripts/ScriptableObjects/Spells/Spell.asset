@@ -19,12 +19,11 @@ MonoBehaviour:
   amountOfObjects: 0
   specialEffectDuration: []
   specialEffectDamage: []
-  homing: 0
   spellObjectPrefab: {fileID: 0}
   target: {fileID: 0}
   spellLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  typeOfSpell: 2
-  specialEffects: 0
-  nextCast: 0
+    m_Bits: 2147483647
+  typeOfSpell: 6
+  specialEffects: 5
+  nextCast: 2.4808307

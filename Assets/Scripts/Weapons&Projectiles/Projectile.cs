@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : SpellTemplate
 {
     [SerializeField] private float throwForce;
     [SerializeField] private float destroyDelay;
-    public float damage;
 
     private Rigidbody rb;
 
@@ -16,10 +15,10 @@ public class Projectile : MonoBehaviour
         StartCoroutine(DestroyAfterTime());
     }
 
-    public void ThrowProjectile(Vector3 direction, float dm)
+    public void ThrowProjectile(Vector3 direction, Spell spell)
     {
+        SetSpellData(spell);
         rb.AddForce(direction * throwForce, ForceMode.Impulse);
-        damage = dm;
     }
 
     IEnumerator DestroyAfterTime()

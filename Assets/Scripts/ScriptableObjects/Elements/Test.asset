@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5893deddb1825854c89a25e68f63dd3b, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  basicAttack: {fileID: 0}
-  spell: {fileID: 0}
-  spell2: {fileID: 0}
-  ultimate: {fileID: 0}
+  basicAttack: {fileID: 11400000, guid: 230d5a79213add945a5d8ff6e8e5abc3, type: 2}
+  spell: {fileID: 11400000, guid: 230d5a79213add945a5d8ff6e8e5abc3, type: 2}
+  spell2: {fileID: 11400000, guid: 230d5a79213add945a5d8ff6e8e5abc3, type: 2}
+  ultimate: {fileID: 11400000, guid: 230d5a79213add945a5d8ff6e8e5abc3, type: 2}

@@ -71,7 +71,7 @@ public class SpellCaster : MonoBehaviour
     private void Projectile(Transform projectileSpawnPoint, Transform projectileDirection)
     {
             GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
-            currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell.spellDamage);
+            currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell);
     }
 
     private void HomingProjectile(Transform projectileSpawnPoint, Transform projectileDirection, bool released)
@@ -80,7 +80,7 @@ public class SpellCaster : MonoBehaviour
         if (released)
         {
             GameObject currentProjectile = Instantiate(currentSpell.spellObjectPrefab, projectileSpawnPoint.position, Quaternion.identity);
-            currentProjectile.GetComponent<Projectile>().ThrowProjectile(projectileDirection.forward, currentSpell.spellDamage);
+            currentProjectile.GetComponent<HomingProjectile>().SetSpellData(currentSpell);
         }
     }
 
