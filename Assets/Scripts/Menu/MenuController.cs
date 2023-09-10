@@ -12,7 +12,7 @@ public struct SubMenu
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private SubMenu[] subMenus;
-
+    protected string currentMenu;
     public void DeactivateMenu(string name)
     {
         foreach (var subMenu in subMenus)
