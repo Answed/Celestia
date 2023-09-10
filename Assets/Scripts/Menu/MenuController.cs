@@ -36,4 +36,10 @@ public class MenuController : MonoBehaviour
             }
         }
     }
+
+    public void SwitchMenu(string from, string to)
+    {
+        DeactivateMenu(from);
+        ActivateMenu(to);
+    }
 }
