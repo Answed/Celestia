@@ -24,4 +24,16 @@ public class MenuController : MonoBehaviour
             }
         }
     }
+
+    public void ActivateMenu(string name)
+    {
+        foreach (var subMenu in subMenus)
+        {
+            if (subMenu.name == name)
+            {
+                subMenu.menuObjects.SetActive(true);
+                return;
+            }
+        }
+    }
 }
