@@ -42,4 +42,10 @@ public class MenuController : MonoBehaviour
         DeactivateMenu(from);
         ActivateMenu(to);
     }
+
+    public void Back()
+    {
+        SwitchMenu(currentMenu, "Start");
+        currentMenu = "Start";
+    }
 }

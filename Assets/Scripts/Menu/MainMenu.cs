@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MenuController
 {
-    private string currentMenu;
 
     public void Settings()
     {
@@ -21,11 +20,7 @@ public class MainMenu : MenuController
     {
         DeactivateMenu("Start");
     }
-    public void Back()
-    {
-        SwitchMenu(currentMenu, "Start");
-        currentMenu = "Start";
-    }
+   
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
