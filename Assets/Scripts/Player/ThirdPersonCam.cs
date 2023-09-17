@@ -19,9 +19,6 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; // Will be removed later on just for testing
-
         cam = GetComponent<CinemachineFreeLook>();
     }
 

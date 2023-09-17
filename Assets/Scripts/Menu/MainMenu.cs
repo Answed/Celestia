@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MenuController
 {
-
     public void Settings()
     {
         SwitchMenu("Start", "Settings");
@@ -16,13 +15,5 @@ public class MainMenu : MenuController
         SwitchMenu("Start", "Credits");
         currentMenu = "Credits";
     }
-    public void Resume()
-    {
-        DeactivateMenu("Start");
-    }
    
-    public void BackToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
 }

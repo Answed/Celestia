@@ -58,10 +58,7 @@ public class SpellCaster : MonoBehaviour
                     OtherCast(projectileSpawnPoint, projectileDirection, spellReleased);
                     break;
                 case TypeOfSpell.Test:
-                    foreach(string effect in currentSpell.specialEffects.ToString().Split(','))
-                    {
-                        Debug.Log(effect);
-                    }
+
                     break;
             }
             currentSpell.nextCast = Time.time + currentSpell.spellCoolDown + currentSpell.spellDuration;

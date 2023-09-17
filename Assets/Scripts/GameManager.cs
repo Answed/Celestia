@@ -20,16 +20,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(input.pauseGame >= 1 && !gameIsPaused)
+
+    }
+
+    public void PauseGame()
+    {
+        if (!gameIsPaused)
         {
             gameIsPaused = true;
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
-        {
             Resume();
-        }
     }
 
     public void Resume()
@@ -37,5 +42,7 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

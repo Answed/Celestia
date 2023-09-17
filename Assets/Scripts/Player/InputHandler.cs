@@ -18,6 +18,14 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public float ultimate = 0;
     [HideInInspector] public bool ultimateReleased;
     [HideInInspector] public float pauseGame;
+
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();   
+    }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -74,6 +82,6 @@ public class InputHandler : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext ctx)
     {
-        pauseGame = ctx.ReadValue<float>();
+        gameManager.PauseGame();
     }
 }

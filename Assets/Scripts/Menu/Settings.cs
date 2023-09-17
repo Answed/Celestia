@@ -27,10 +27,4 @@ public class Settings : MenuController
         SwitchMenu(currentMenu, "KeyBindings");
         currentMenu = "KeyBindings";
     }
-
-    public void Back()
-    {
-        SwitchMenu(currentMenu, "Start");
-        currentMenu = "Start";
-    }
 }

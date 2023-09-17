@@ -13,6 +13,8 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] private SubMenu[] subMenus;
     protected string currentMenu;
+    [SerializeField] protected GameObject backButton;
+
     public void DeactivateMenu(string name)
     {
         foreach (var subMenu in subMenus)
@@ -47,5 +49,14 @@ public class MenuController : MonoBehaviour
     {
         SwitchMenu(currentMenu, "Start");
         currentMenu = "Start";
+        backButton.SetActive(true);
+    }
+
+    public void SwitchBackButton(bool state = false)
+    {
+        if(state)
+            backButton.SetActive(true);
+        else
+            backButton.SetActive(false);
     }
 }
