@@ -32,7 +32,6 @@ public class PauseMenu : MenuController
         SwitchMenu(currentMenu, "Settings");
         currentMenu = "Settings";
     }
-
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

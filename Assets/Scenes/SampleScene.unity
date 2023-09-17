@@ -1109,46 +1109,6 @@ MonoBehaviour:
     m_ActionId: c81ab073-6014-4507-8704-c370f2bf738a
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 00469b54-4e39-487e-9c18-0a615c97f3f4
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2689a526-2370-48dd-86f7-096ae55abd5d
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 273dea2d-48d0-4526-88f3-4c61d1945be1
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9a6ef961-644e-4b17-8f47-e5b321063b5b
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e0332153-fea0-476f-9678-7f148222134e
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1e218e4b-c48f-43f3-b353-2dcf01112e4a
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a20b65cf-6428-4926-9d3a-cc56aabec396
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fac4d4ab-e40e-4ab2-be8f-fa49d80552fb
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8208b92a-6844-4ca8-9ae7-3c84c2d3a31a
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2a7fd40f-d9c7-44da-94d2-fde916a69dac
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 984466971}
         m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
@@ -1276,6 +1236,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4156c6c6-cc33-403d-bd35-d80d9879d6d5
     m_ActionName: Player/Ultimate[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 984466971}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02b38fb4-0495-4135-a301-f8f425a38bb6
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1307,6 +1283,7 @@ MonoBehaviour:
   spell2Released: 0
   ultimate: 0
   ultimateReleased: 0
+  pauseGame: 0
 --- !u!114 &984466972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,7 +1767,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1555729776}
-  - component: {fileID: 1555729775}
+  - component: {fileID: 1555729777}
+  - component: {fileID: 1555729778}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1798,21 +1776,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1555729775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555729774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 988601692b028bf4aaa0aa234d394e35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subMenus:
-  - name: 
-    menuObjects: {fileID: 0}
 --- !u!4 &1555729776
 Transform:
   m_ObjectHideFlags: 0
@@ -1828,6 +1791,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1555729777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555729774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dec4048fa25b6f40bc0475b3dbf88e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subMenus:
+  - name: SaveGame
+    menuObjects: {fileID: 0}
+  - name: LoadGame
+    menuObjects: {fileID: 0}
+  - name: Settings
+    menuObjects: {fileID: 0}
+  - name: Back
+    menuObjects: {fileID: 0}
+  - name: BackToMainMenu
+    menuObjects: {fileID: 0}
+  - name: ResumeGame
+    menuObjects: {fileID: 0}
+  - name: Start
+    menuObjects: {fileID: 0}
+--- !u!114 &1555729778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555729774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174ff94e1e705d743b410689ceab326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameIsPaused: 0
+  pauseMenu: {fileID: 0}
 --- !u!1 &1689273928
 GameObject:
   m_ObjectHideFlags: 0

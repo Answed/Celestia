@@ -17,6 +17,7 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public bool spell2Released;
     [HideInInspector] public float ultimate = 0;
     [HideInInspector] public bool ultimateReleased;
+    [HideInInspector] public float pauseGame;
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementDirection = ctx.ReadValue<Vector2>();
@@ -69,5 +70,10 @@ public class InputHandler : MonoBehaviour
     {
         ultimate  = ctx.ReadValue<float>();
         ultimateReleased = ctx.canceled;
+    }
+
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        pauseGame = ctx.ReadValue<float>();
     }
 }
